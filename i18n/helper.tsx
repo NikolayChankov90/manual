@@ -63,10 +63,14 @@ export async function getQuestions(): Promise<QuizQuestion[]> {
  */
 export function getRejectionMessage(): string | undefined {
     try {
-        return "Unfortunately, we are unable to prescribe this medication for you. This\n" +
-            "is because finasteride can alter the PSA levels, which may be used to monitor for\n" +
-            "cancer. You should discuss this further with your GP or specialist if you would still like\n" +
-            "this medication.";
+        return "Unfortunately, we are unable to prescribe this medication for you. This is because finasteride can alter the PSA levels, which may be used to monitor for cancer. You should discuss this further with your GP or specialist if you would still like this medication.";
+    } catch (error) {
+        console.error('Failed to get success message:', error);
+    }
+}
+export function getSubtitleMessage(): string | undefined {
+    try {
+        return "We're working around the clock to bring you a holistic approach to your wellness. From top to bottom, inside and out.";
     } catch (error) {
         console.error('Failed to get success message:', error);
     }

@@ -24,38 +24,42 @@ export const getHomeStyles = () => {
             flex: 1,
             paddingHorizontal: responsiveSize(24),
             justifyContent: "space-between",
-            alignItems: "center",
+            textAlign: "center",
         },
         logo: {
-            marginTop: height * 0.08, // Increased top margin
+            marginTop: height * 0.04, // Increased top margin
             marginBottom: height * 0.04, // Added bottom margin
             width: responsiveSize(172),
             height: responsiveSize(172),
+            alignSelf: "center"
         },
         textContainer: {
-            alignItems: "center",
+            flexWrap: "nowrap",
+            width: "100%",
+        },
+        contentWrapper: {
+            width: "100%",
+            maxWidth: responsiveSize(366),
+            alignSelf: "center", // centers the whole block while text stays left-aligned
         },
         heading: {
+            width: "100%",
+            color: "#0B3B3C",
             textAlign: "center",
-            marginBottom: responsiveSize(24), // Increased margin between heading and subheading
+            marginBottom: responsiveSize(10),
             fontFamily: "TTNorms-Medium",
             fontWeight: "500",
-            fontSize: responsiveFont(42), // Keep the 42 font size
-            lineHeight: responsiveFont(40), // Adjusted line height for better spacing
-            letterSpacing: -0.5,
-            color: "#0B3B3C",
-            width: 311,
-            height: 160,
+            fontSize: Platform.OS === "ios" ? responsiveFont(48) : responsiveFont(46),
+            lineHeight: Platform.OS === "ios" ? responsiveFont(58) : responsiveFont(56),
         },
         subheading: {
-            color: "#0B3B3C",
+            width: "100%",
             textAlign: "center",
+            color: "#0B3B3C",
             fontWeight: "400",
             fontSize: responsiveFont(16),
             lineHeight: responsiveFont(24),
-            marginHorizontal: responsiveSize(20),
-            marginBottom: responsiveSize(40), // Increased bottom margin
-            maxWidth: responsiveSize(366), // Match the width from your design (366)
+            marginBottom: responsiveSize(40),
         },
         buttonContainer: {
             width: "100%",
@@ -89,20 +93,8 @@ export const getHomeStyles = () => {
         // Platform-specific adjustments
         ...Platform.select({
             ios: {
-                heading: {
-                    fontFamily: "TTNorms-Medium",
-                    fontWeight: "500",
-                    fontSize: responsiveFont(48),
-                    lineHeight: responsiveFont(58),
-                },
             },
             android: {
-                heading: {
-                    fontFamily: "TTNorms-Medium",
-                    fontWeight: "500",
-                    fontSize: responsiveFont(46),
-                    lineHeight: responsiveFont(56),
-                },
             },
         }),
     })

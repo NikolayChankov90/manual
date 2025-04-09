@@ -63,9 +63,11 @@ export const getStylesheet = () => {
         },
         overlayNumber: {
             position: "absolute",
-            fontWeight: 600,
-            color: "rgba(255, 255, 255, 0.8)",
-
+            fontSize: responsiveFont(140),
+            fontWeight: "bold",
+            color: "rgba(255, 255, 255, 0.9)",
+            opacity: 0.9,
+            zIndex: 1,
         },
         categoryLabel: {
             fontSize: responsiveFont(12), // Smaller font size for category
@@ -86,8 +88,6 @@ export const getStylesheet = () => {
             color: "#0B3B3C",
             lineHeight: responsiveFont(24),
             marginBottom: responsiveSize(30),
-
-
         },
         paginationContainer: {
             flexDirection: "row",
@@ -128,7 +128,6 @@ export const getStylesheet = () => {
         },
         imageContainerRight: {
             alignSelf: "flex-end",
-            marginRight: width * 0.05,
         },
         overlayNumberLeft: {
             right: -width * 0.25, // Adjusted to be closer to the image
@@ -144,44 +143,14 @@ export const getStylesheet = () => {
             alignSelf: "flex-end",
             right: "auto",
         },
-        // Add responsive styles for different screen sizes
         ...Platform.select({
             ios: {
                 // iOS specific adjustments
-                overlayNumber: {
-                    position: "absolute",
-                    top: responsiveSize(20),
-                    fontSize: responsiveFont(100),
-                    fontWeight: "bold",
-                    color: "rgba(255, 255, 255, 0.8)",
-                    opacity: 0.8,
-                    zIndex: 1,
-                },
             },
             android: {
                 // Android specific adjustments
-                overlayNumber: {
-                    position: "absolute",
-                    top: responsiveSize(15),
-                    fontSize: responsiveFont(95),
-                    fontWeight: "bold",
-                    color: "rgba(255, 255, 255, 0.8)",
-                    opacity: 0.8,
-                    zIndex: 1,
-                },
+
             },
         }),
     })
 }
-
-// For components that can't use hooks, provide a static version
-export const stylesheet = StyleSheet.create({
-    // Static styles remain the same...
-    container: {
-        flex: 1,
-        backgroundColor: "#e6ede7",
-        padding: responsiveSize(20),
-        justifyContent: "space-between",
-    },
-    // ... rest of your static styles
-})

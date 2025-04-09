@@ -84,7 +84,7 @@ export default function QuizQuestionScreen() {
         const selectedOption = selectedOptions[questionIndex];
 
         // Safety check: ensure the selected option exists in the array
-        if (!currentQuestion.options || selectedOption >= currentQuestion.option.length) {
+        if (!currentQuestion.options || selectedOption >= currentQuestion.options.length) {
             return;
         }
 

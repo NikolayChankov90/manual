@@ -3,12 +3,14 @@ import { useLocalSearchParams, useRouter, useNavigation } from 'expo-router'
 import { getRejectionMessage } from "@/i18n/helper"
 import { useEffect } from "react"
 import { getStylesheet } from "@/styles/result.style";
+import {useTranslation} from "react-i18next";
 
 export default function QuizResult() {
     const router = useRouter()
     const navigation = useNavigation()
     const params = useLocalSearchParams()
     const styles = getStylesheet()
+    const {t} = useTranslation()
 
     const isRejection = params.isRejection === 'true'
     let rejectionMessage;
@@ -56,7 +58,7 @@ export default function QuizResult() {
 
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.okButton} onPress={handleOk}>
-                    <Text style={styles.okButtonText}>OK</Text>
+                    <Text style={styles.okButtonText}>{t("quiz.okBtn", 'OK')}</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>

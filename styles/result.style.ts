@@ -1,5 +1,10 @@
-import { StyleSheet } from "react-native"
+import {Dimensions, StyleSheet} from "react-native"
 import { getDeviceInfo, getScaleFunctions, getSpacing } from "@/app/utils/responsive"
+
+const { width, height } = Dimensions.get("window")
+const scale = Math.min(width, height) / 375
+
+const responsiveSize = (size: number) => Math.round(size * scale)
 
 export const getStylesheet = () => {
     const deviceInfo = getDeviceInfo()
@@ -40,7 +45,7 @@ export const getStylesheet = () => {
             fontSize: fontScale(22),
             lineHeight: fontScale(32),
             color: "#0B3B3C",
-            textAlign: "left",
+            flexWrap: "nowrap",
             marginBottom: spacing.xxl,
             fontWeight: "400",
             letterSpacing: isSmallDevice ? -0.3 : -0.5,
@@ -57,18 +62,17 @@ export const getStylesheet = () => {
         okButton: {
             backgroundColor: "#0B3B3C",
             borderRadius: 100,
-            paddingVertical: spacing.md,
+            paddingVertical: responsiveSize(16),
             alignItems: "center",
             justifyContent: "center",
             width: "100%",
-            height: verticalScale(56),
         },
         okButtonText: {
-            color: "white",
             fontSize: fontScale(16),
             fontWeight: "600",
-            letterSpacing: 1,
             textTransform: "uppercase",
+            color: "white",
+            letterSpacing: 1,
         },
     })
 }
