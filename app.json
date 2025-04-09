@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ManualApp",
-    "slug": "ManualApp",
+    "name": "manual",
+    "slug": "manual",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/symbol.png",

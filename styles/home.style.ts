@@ -1,77 +1,110 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet, Dimensions, Platform } from "react-native"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
 
-const { width } = Dimensions.get('window');
+// Get screen dimensions
+const { width, height } = Dimensions.get("window")
 
-export const stylesheet = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#A5B79F',
-    },
-    content: {
-        flex: 1,
-        paddingHorizontal: 24,
-        justifyContent: 'space-between',
-        paddingVertical: 26,
-    },
-    logoContainer: {
-        alignItems: 'center',
-        textAlign: "center",
-        justifyContent: "space-between"
+// Calculate responsive sizes
+const scale = Math.min(width, height) / 375 // Base scale on iPhone 8 size
+const responsiveFont = (size: number) => Math.round(size * scale)
+const responsiveSize = (size: number) => Math.round(size * scale)
 
-    },
-    logo: {
-        width:172,
-        height: 172,
-        marginTop: 80,
-    },
-    textContainer: {
-        alignItems: 'center',
-    },
-    heading: {
-        textAlign: 'center',
-        marginBottom: 16,
-        width: 311,
-        height: 160,
-        fontFamily: 'TTNorms-Medium',
-        fontWeight: '500',
-        fontSize: 65,
-        lineHeight: 80,
-        letterSpacing: -0.03,
-        color: '#0B3B3C',
-    },
-    subheading: {
-        color: '#0B3B3C', // Dark teal color for text textAlign: 'center',
-        fontWeight: 400,
-        fontSize: 19,
-        lineHeight: 30,
-        letterSpacing: 0,
-        gap: 10,
-        textAlign: "center",
-    },
-    learnMoreButton: {
-        alignSelf: 'center',
-        lineHeight: 30,
-        cursor: "pointer"
-    },
-    learnMoreText: {
-        fontSize: 16,
-        marginBottom: 0,
-        color: '#0B3B3C', // Dark teal color for text
-        textDecorationLine: 'underline',
-        fontWeight: '400',
-    },
-    quizButton: {
-        backgroundColor: '#7E0707', // Dark red color for button
-        borderRadius: 100,
-        paddingVertical: 16,
-        width: width - 48, // Full width minus padding
-        height: 60,
-        alignItems: 'center',
-        marginTop: 20,
-        cursor: "pointer"
-    },
-    quizButtonText: {
-        color: 'white',
-        fontSize: 16,
-    },
-});
+// Hook-based version for components that can use hooks
+export const getHomeStyles = () => {
+    const insets = useSafeAreaInsets()
+
+    return StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: "#A5B79F",
+            paddingTop: insets.top,
+            paddingBottom: insets.bottom,
+        },
+        content: {
+            flex: 1,
+            paddingHorizontal: responsiveSize(24),
+            justifyContent: "space-between",
+            alignItems: "center",
+        },
+        logo: {
+            marginTop: height * 0.08, // Increased top margin
+            marginBottom: height * 0.04, // Added bottom margin
+            width: responsiveSize(172),
+            height: responsiveSize(172),
+        },
+        textContainer: {
+            alignItems: "center",
+        },
+        heading: {
+            textAlign: "center",
+            marginBottom: responsiveSize(24), // Increased margin between heading and subheading
+            fontFamily: "TTNorms-Medium",
+            fontWeight: "500",
+            fontSize: responsiveFont(42), // Keep the 42 font size
+            lineHeight: responsiveFont(40), // Adjusted line height for better spacing
+            letterSpacing: -0.5,
+            color: "#0B3B3C",
+            width: 311,
+            height: 160,
+        },
+        subheading: {
+            color: "#0B3B3C",
+            textAlign: "center",
+            fontWeight: "400",
+            fontSize: responsiveFont(16),
+            lineHeight: responsiveFont(24),
+            marginHorizontal: responsiveSize(20),
+            marginBottom: responsiveSize(40), // Increased bottom margin
+            maxWidth: responsiveSize(366), // Match the width from your design (366)
+        },
+        buttonContainer: {
+            width: "100%",
+            alignItems: "center",
+            marginBottom: insets.bottom > 0 ? responsiveSize(10) : responsiveSize(30),
+        },
+        learnMoreButton: {
+            marginBottom: responsiveSize(20),
+        },
+        learnMoreText: {
+            fontSize: responsiveFont(16),
+            color: "#0B3B3C",
+            textDecorationLine: "underline",
+            fontWeight: "500",
+            textTransform: "uppercase",
+        },
+        quizButton: {
+            backgroundColor: "#7E0707",
+            borderRadius: 100,
+            paddingVertical: responsiveSize(16),
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+        },
+        quizButtonText: {
+            color: "white",
+            fontSize: responsiveFont(16),
+            fontWeight: "600",
+            textTransform: "uppercase",
+        },
+        // Platform-specific adjustments
+        ...Platform.select({
+            ios: {
+                heading: {
+                    fontFamily: "TTNorms-Medium",
+                    fontWeight: "500",
+                    fontSize: responsiveFont(48),
+                    lineHeight: responsiveFont(58),
+                },
+            },
+            android: {
+                heading: {
+                    fontFamily: "TTNorms-Medium",
+                    fontWeight: "500",
+                    fontSize: responsiveFont(46),
+                    lineHeight: responsiveFont(56),
+                },
+            },
+        }),
+    })
+}
+
