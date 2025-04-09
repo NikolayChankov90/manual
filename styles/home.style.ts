@@ -27,7 +27,7 @@ export const getHomeStyles = () => {
             textAlign: "center",
         },
         logo: {
-            marginTop: height * 0.04, // Increased top margin
+            marginTop: height * 0.07, // Increased top margin
             marginBottom: height * 0.04, // Added bottom margin
             width: responsiveSize(172),
             height: responsiveSize(172),

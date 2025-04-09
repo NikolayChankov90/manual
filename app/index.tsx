@@ -22,14 +22,13 @@ export default function Index() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar barStyle="dark-content" />
             <View style={styles.content}>
-                <Image
-                    source={images.brandLogo}
-                    style={styles.logo}
-                    resizeMode="contain"
-                />
                 <View style={styles.contentWrapper}>
+                    <Image
+                        source={images.brandLogo}
+                        style={styles.logo}
+                        resizeMode="contain"
+                    />
                     <View style={styles.textContainer}>
                         <Text style={styles.heading}>{t("home.title")}</Text>
                         <Text style={styles.subheading}>
@@ -39,18 +38,16 @@ export default function Index() {
                             )}
                         </Text>
                     </View>
-
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.learnMoreButton} onPress={handleLearnMore}>
-                            <Text style={styles.learnMoreText}>{t("home.learnMoreBtn", "LEARN MORE")}</Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={styles.quizButton} onPress={handleTakeQuiz}>
-                            <Text style={styles.quizButtonText}>{t("home.takeQuizBtn", "TAKE THE QUIZ")}</Text>
-                        </TouchableOpacity>
-                    </View>
                 </View>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.learnMoreButton} onPress={handleLearnMore}>
+                        <Text style={styles.learnMoreText}>{t("home.learnMoreBtn", "LEARN MORE")}</Text>
+                    </TouchableOpacity>
 
+                    <TouchableOpacity style={styles.quizButton} onPress={handleTakeQuiz}>
+                        <Text style={styles.quizButtonText}>{t("home.takeQuizBtn", "TAKE THE QUIZ")}</Text>
+                    </TouchableOpacity>
+                </View>
 
             </View>
         </SafeAreaView>
