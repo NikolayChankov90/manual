@@ -48,7 +48,7 @@ export const getHomeStyles = () => {
             marginBottom: responsiveSize(10),
             fontFamily: "TTNorms-Medium",
             fontWeight: "500",
-            fontSize: Platform.OS === "ios" ? responsiveFont(48) : responsiveFont(46),
+            fontSize: Platform.OS === "ios" ? responsiveFont(48) : responsiveFont(52),
             lineHeight: Platform.OS === "ios" ? responsiveFont(58) : responsiveFont(56),
         },
         subheading: {
