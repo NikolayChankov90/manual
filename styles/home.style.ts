@@ -9,7 +9,6 @@ const scale = Math.min(width, height) / 375 // Base scale on iPhone 8 size
 const responsiveFont = (size: number) => Math.round(size * scale)
 const responsiveSize = (size: number) => Math.round(size * scale)
 
-// Hook-based version for components that can use hooks
 export const getHomeStyles = () => {
     const insets = useSafeAreaInsets()
 
