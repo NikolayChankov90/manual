@@ -59,13 +59,13 @@ export const getStylesheet = () => {
             width: "100%",
             height: "100%",
             borderRadius: responsiveSize(15),
-            zIndex: 2
+            zIndex: 2,
         },
         overlayNumber: {
             position: "absolute",
-            fontSize: responsiveFont(140),
+            fontSize: responsiveFont(200), // Much larger font size
             fontWeight: "bold",
-            color: "rgba(255, 255, 255, 0.9)",
+            color: "white", // Pure white for better visibility
             opacity: 0.9,
             zIndex: 1,
         },
@@ -125,23 +125,41 @@ export const getStylesheet = () => {
         },
         imageContainerLeft: {
             alignSelf: "flex-start",
+            marginLeft: 0, // Remove margin to align with edge
         },
         imageContainerRight: {
             alignSelf: "flex-end",
+            marginRight: 0, // Remove margin to align with edge
         },
         overlayNumberLeft: {
-            right: -width * 0.25, // Adjusted to be closer to the image
-            top: responsiveSize(10), // Position from top
-            fontSize: responsiveFont(120), // Slightly smaller font
-            alignSelf: "flex-end",
+            position: "absolute",
+            right: -width * 0.55, // Position to show only part of the number
+            bottom: responsiveSize(0), // Adjust bottom position to compensate for larger font
+            fontSize: responsiveFont(165),
+            fontFamily: "TTNorms-Medium",
+            color: "white",
+            opacity: 0.9,
+            zIndex: 1,
+            textAlign: "center",
+            width: width * 0.7, // Give it enough width to center the text
             left: "auto",
+            height: width * 0.45, // Match the height of the image container
+            lineHeight: width * 0.45 + responsiveSize(40), // Adjust line height to position text at bottom
         },
         overlayNumberRight: {
-            left: -width * 0.25, // Adjusted to be closer to the image
-            top: responsiveSize(10), // Position from top
-            fontSize: responsiveFont(120), // Slightly smaller font
-            alignSelf: "flex-end",
+            position: "absolute",
+            left: -width * 0.55, // Position to show only part of the number
+            bottom: responsiveSize(0), // Adjust bottom position to compensate for larger font
+            fontSize: responsiveFont(165),
+            fontFamily: "TTNorms-Medium",
+            color: "white",
+            opacity: 0.9,
+            zIndex: 1,
+            textAlign: "center",
+            width: width * 0.7, // Give it enough width to center the text
             right: "auto",
+            height: width * 0.45, // Match the height of the image container
+            lineHeight: width * 0.45 + responsiveSize(40), // Adjust line height to position text at bottom
         },
         ...Platform.select({
             ios: {
@@ -149,7 +167,6 @@ export const getStylesheet = () => {
             },
             android: {
                 // Android specific adjustments
-
             },
         }),
     })
